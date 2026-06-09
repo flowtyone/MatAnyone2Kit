@@ -1,9 +1,15 @@
-# MatAnyoneKitCoreML
+# MatAnyone2Kit
 
 A self-contained Swift package that runs the [MatAnyone2](https://github.com/pq-yang/MatAnyone)
 single-object video-matting model **in real time on the Apple Neural Engine** — stable 30 fps on an
 iPhone 16 (A18). The six precompiled Core ML models ship inside the package, so you add one
 dependency and feed it camera frames; there's no separate model download or launch-time compile.
+
+<p align="center">
+  <img src="scripts/example/compare.gif" width="420" alt="Left: raw camera frame. Right: the same frame matted by MatAnyone2 on the Apple Neural Engine.">
+</p>
+
+<p align="center"><em>Same frame, split down the middle — raw camera on the left, MatAnyone2's real-time matte on the right. No green screen, no rotoscoping.</em></p>
 
 The conversion toolchain (and a writeup of every ANE/Swift optimization that made it real-time) lives
 in [`scripts/`](scripts).
