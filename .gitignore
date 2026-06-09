@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------------------
+# macOS
+# ---------------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ---------------------------------------------------------------------------
+# Swift Package Manager / Xcode
+# ---------------------------------------------------------------------------
+.build/
+.swiftpm/
+Package.resolved
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+*.xcuserstate
+.netrc
+
+# NOTE: the .mlmodelc bundles under Sources/MatAnyoneKitCoreML/Resources/MatAnyone
+# are shipped as package resources and MUST be committed. Do not ignore them.
+
+# ---------------------------------------------------------------------------
+# Python (scripts/ — export + parity tooling)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+.python-version
+
+# uv / pip
+.uv/
+pip-wheel-metadata/
+*.egg-info/
+.eggs/
+build/
+dist/
+# Keep uv.lock committed for reproducible script envs (do NOT ignore it).
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Model / export scratch (intermediate conversion artifacts, not shipped)
+# ---------------------------------------------------------------------------
+*.mlpackage
+*.mlmodel
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.log
+
+# ---------------------------------------------------------------------------
+# Editor / misc
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~

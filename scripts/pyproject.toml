@@ -1,0 +1,19 @@
+[project]
+name = "matanyone2-coreml"
+version = "0.1.0"
+description = "MatAnyone2 → Core ML / ANE conversion + parity tooling"
+readme = "README.md"
+# coremltools + torch wheels resolve cleanly on 3.11; keep the floor here.
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "coremltools>=8.0",
+    # Pinned to the torch version coremltools 9.0 was tested against (avoids conversion-time
+    # "Torch version X has not been tested" surprises during export).
+    "torch==2.7.0",
+    "numpy>=1.26",
+    "omegaconf>=2.3",
+]
+
+# Scripts-only project (export/dump/harness), not an installable package.
+[tool.uv]
+package = false

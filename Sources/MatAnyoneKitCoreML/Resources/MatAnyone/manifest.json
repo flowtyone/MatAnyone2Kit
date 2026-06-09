@@ -1,0 +1,291 @@
+{
+  "working_h": 512,
+  "working_w": 288,
+  "compute_units": "CPU_AND_NE",
+  "models": [
+    {
+      "name": "encoder",
+      "path": "models/encoder.mlpackage",
+      "inputs": [
+        {
+          "name": "image",
+          "shape": [
+            1,
+            3,
+            512,
+            288
+          ]
+        }
+      ],
+      "outputs": [
+        "f16",
+        "f8",
+        "f4",
+        "f2",
+        "f1",
+        "pix_feat",
+        "key",
+        "shrinkage",
+        "selection"
+      ],
+      "median_ms_mac_ane": 9.0
+    },
+    {
+      "name": "uncert",
+      "path": "models/uncert.mlpackage",
+      "inputs": [
+        {
+          "name": "last_pix_feat",
+          "shape": [
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "cur_pix_feat",
+          "shape": [
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "last_mask",
+          "shape": [
+            1,
+            1,
+            512,
+            288
+          ]
+        },
+        {
+          "name": "mem_val_diff",
+          "shape": [
+            1,
+            256,
+            32,
+            18
+          ]
+        }
+      ],
+      "outputs": [
+        "prob"
+      ],
+      "median_ms_mac_ane": 0.55
+    },
+    {
+      "name": "readout",
+      "path": "models/readout.mlpackage",
+      "inputs": [
+        {
+          "name": "pix_feat",
+          "shape": [
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "pixel",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "sensory",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "last_mask",
+          "shape": [
+            1,
+            1,
+            512,
+            288
+          ]
+        },
+        {
+          "name": "obj_memory",
+          "shape": [
+            1,
+            1,
+            1,
+            16,
+            257
+          ]
+        }
+      ],
+      "outputs": [
+        "mem_readout"
+      ],
+      "median_ms_mac_ane": 2.92
+    },
+    {
+      "name": "decoder",
+      "path": "models/decoder.mlpackage",
+      "inputs": [
+        {
+          "name": "f16",
+          "shape": [
+            1,
+            1024,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "f8",
+          "shape": [
+            1,
+            512,
+            64,
+            36
+          ]
+        },
+        {
+          "name": "f4",
+          "shape": [
+            1,
+            256,
+            128,
+            72
+          ]
+        },
+        {
+          "name": "f2",
+          "shape": [
+            1,
+            64,
+            256,
+            144
+          ]
+        },
+        {
+          "name": "f1",
+          "shape": [
+            1,
+            3,
+            512,
+            288
+          ]
+        },
+        {
+          "name": "memory_readout",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "sensory",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        }
+      ],
+      "outputs": [
+        "logits",
+        "new_sensory"
+      ],
+      "median_ms_mac_ane": 7.81
+    },
+    {
+      "name": "maskencoder",
+      "path": "models/maskencoder.mlpackage",
+      "inputs": [
+        {
+          "name": "image",
+          "shape": [
+            1,
+            3,
+            512,
+            288
+          ]
+        },
+        {
+          "name": "pix_feat",
+          "shape": [
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "sensory",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        },
+        {
+          "name": "masks",
+          "shape": [
+            1,
+            1,
+            512,
+            288
+          ]
+        }
+      ],
+      "outputs": [
+        "mask_value",
+        "new_sensory"
+      ],
+      "median_ms_mac_ane": 2.0
+    },
+    {
+      "name": "objsummary",
+      "path": "models/objsummary.mlpackage",
+      "inputs": [
+        {
+          "name": "masks",
+          "shape": [
+            1,
+            1,
+            512,
+            288
+          ]
+        },
+        {
+          "name": "mask_value",
+          "shape": [
+            1,
+            1,
+            256,
+            32,
+            18
+          ]
+        }
+      ],
+      "outputs": [
+        "obj_summaries"
+      ],
+      "median_ms_mac_ane": 0.54
+    }
+  ]
+}
