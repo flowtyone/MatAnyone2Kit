@@ -1,7 +1,7 @@
 # MatAnyone2 → Core ML / ANE
 
 This folder is the conversion toolchain that turns the upstream PyTorch
-[MatAnyone2](https://github.com/pq-yang/MatAnyone) single-object matting model into the six Core ML
+[MatAnyone2](https://github.com/pq-yang/MatAnyone2) single-object matting model into the six Core ML
 programs that ship inside [`../Sources/MatAnyoneKitCoreML`](../Sources/MatAnyoneKitCoreML) and run
 **real-time on the Apple Neural Engine** (stable 30 fps on an iPhone 16 / A18).
 

@@ -1,6 +1,9 @@
 # MatAnyone2Kit
 
-A self-contained Swift package that runs the [MatAnyone2](https://github.com/pq-yang/MatAnyone)
+[![code: GPL-3.0](https://img.shields.io/badge/code-GPL--3.0-blue)](LICENSE)
+[![weights: S-Lab 1.0 non-commercial](https://img.shields.io/badge/weights-S--Lab%201.0%20non--commercial-red)](Sources/MatAnyoneKitCoreML/Resources/MatAnyone/LICENSE)
+
+A self-contained Swift package that runs the [MatAnyone2](https://github.com/pq-yang/MatAnyone2)
 single-object video-matting model **in real time on the Apple Neural Engine** — stable 30 fps on an
 iPhone 16 (A18). The six precompiled Core ML models ship inside the package, so you add one
 dependency and feed it camera frames; there's no separate model download or launch-time compile.
@@ -13,6 +16,10 @@ dependency and feed it camera frames; there's no separate model download or laun
 
 The conversion toolchain (and a writeup of every ANE/Swift optimization that made it real-time) lives
 in [`scripts/`](scripts).
+
+> **License:** the package code is GPL-3.0, but the bundled MatAnyone2 weights are
+> [NTU S-Lab License 1.0 — **non-commercial only**](#license). Using this package with the bundled
+> weights is non-commercial. [Details ↓](#license)
 
 ## Install
 
@@ -164,3 +171,19 @@ let matte = MatAnyoneMatte(modelsDir: someURL)
 ```
 
 Set these **before** constructing `MatAnyoneMatte`.
+
+## License
+
+MatAnyone2Kit ships under **two** licenses — see [`NOTICE.md`](NOTICE.md) for the full breakdown:
+
+- **Swift package source code** — GNU GPL-3.0 ([`LICENSE`](LICENSE)).
+- **Bundled MatAnyone2 model weights** (the Core ML models in
+  [`Sources/MatAnyoneKitCoreML/Resources/MatAnyone/`](Sources/MatAnyoneKitCoreML/Resources/MatAnyone/))
+  — **NTU S-Lab License 1.0, non-commercial only**. These are a Core ML conversion of the
+  [MatAnyone2](https://github.com/pq-yang/MatAnyone2) weights by S-Lab, NTU; converting them does not
+  change their license.
+
+> ⚠️ **Using this package with the bundled weights is non-commercial only.** The GPL-3.0 on the code
+> does not grant any commercial rights to the weights. For commercial use of the weights, contact the
+> authors (see the weights
+> [`NOTICE.md`](Sources/MatAnyoneKitCoreML/Resources/MatAnyone/NOTICE.md)).
